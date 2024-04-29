@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <header>
+		<nav>
+			<ul>
+				<li>
+					<a href="index.php" class="home-button"><img src="images/home.png" alt="Home" style="width: 60px;"></a>
+				</li>
+			</ul>
+		</nav>
+	</header>
+<head>
+	<script>
+		// Set the URL of the login page
+		var loginUrl = 'login.php';
+		
+		// Add event listeners for page visibility
+		document.addEventListener('visibilitychange', handleVisibilityChange, false);
+		window.addEventListener('pagehide', handlePageHide, false);
+
+		window.addEventListener('beforeunload', function(event) {
+			// Replace the current history entry with the homepage URL
+			history.replaceState(null, null, 'index.php');
+		  });
+		
+		// Function to handle page visibility change events
+		function handleVisibilityChange() {
+			if (document.visibilityState === 'hidden') {
+				// Redirect to the login page when the tab is hidden
+				window.location.href = loginUrl;
+			}
+		}
+		
+		// Function to handle page hide events
+		function handlePageHide() {
+			// Redirect to the login page when the page is hidden or unloaded
+			window.location.href = loginUrl;
+		}
+		</script>
+</head>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<style>
+  
+    @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+body { background:rgb(30,30,40); }
+form { max-width:420px; margin:50px auto; }
+
+.feedback-input {
+  color:white;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight:500;
+  font-size: 18px;
+  border-radius: 5px;
+  line-height: 22px;
+  background-color: transparent;
+  border:2px solid #CC6666;
+  transition: all 0.3s;
+  padding: 13px;
+  margin-bottom: 15px;
+  width:100%;
+  box-sizing: border-box;
+  outline:0;
+}
+
+.feedback-input:focus { border:2px solid #CC4949; }
+
+textarea {
+  height: 150px;
+  line-height: 150%;
+  resize:vertical;
+}
+
+[type="submit"] {
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  width: 100%;
+  background:#CC6666;
+  border-radius:5px;
+  border:0;
+  cursor:pointer;
+  color:white;
+  font-size:24px;
+  padding-top:10px;
+  padding-bottom:10px;
+  transition: all 0.3s;
+  margin-top:-4px;
+  font-weight:700;
+}
+[type="submit"]:hover { background:#CC4949; }
+</style>
+<body>
+  <form action="submit.php" method="post">
+    <input name="name" type="text" class="feedback-input" placeholder="Name" required="" />   
+    <input name="email" type="text" class="feedback-input" placeholder="Email" required="" />
+    <textarea name="text" class="feedback-input" placeholder="Comment" required=""></textarea>
+    <input type="submit" value="SUBMIT"/>
+  </form>
+</body>
+</html>

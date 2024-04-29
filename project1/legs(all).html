@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<header>
+		<nav>
+			<ul>
+				<li>
+					<a href="index.php" class="home-button"><img src="images/home.png" alt="Home" style="width: 60px;"></a>
+				</li>
+			</ul>
+		</nav>
+	</header>
+<head>
+	<script>
+		// Set the URL of the login page
+		var loginUrl = 'login.php';
+		
+		// Add event listeners for page visibility
+		document.addEventListener('visibilitychange', handleVisibilityChange, false);
+		window.addEventListener('pagehide', handlePageHide, false);
+
+		window.addEventListener('beforeunload', function(event) {
+			// Replace the current history entry with the homepage URL
+			history.replaceState(null, null, 'index.php');
+		  });
+		
+		// Function to handle page visibility change events
+		function handleVisibilityChange() {
+			if (document.visibilityState === 'hidden') {
+				// Redirect to the login page when the tab is hidden
+				window.location.href = loginUrl;
+			}
+		}
+		
+		// Function to handle page hide events
+		function handlePageHide() {
+			// Redirect to the login page when the page is hidden or unloaded
+			window.location.href = loginUrl;
+		}
+		</script>
+</head>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>legs all</title>
+</head>
+<style>
+	body{
+		background-color: black;
+	}
+	.i:hover{
+		width:680px;
+		height:290px;
+		opacity: 1;
+	}
+	img{
+		opacity: 0.6;
+	}
+
+</style>
+<body>
+<div align="center">
+<a href="legs(beginner).html"><img src="images/legs b.png" width="660" height="280" class="i"></a>
+<br>
+<a href="legs(intermediate).html"><img src="images/legs i.png" width="660" height="280" class="i"></a>
+<br>
+<a href="legs(advance).html"><img src="images/legs a.png" width="660" height="280" class="i"></a>
+<br>
+</div>
+</body>
+</html>
